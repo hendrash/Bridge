@@ -25,8 +25,7 @@
     "listener": "ts-node scripts/listener.ts --unhandled-rejections=strict",
     "caller": "ts-node scripts/caller.ts --unhandled-rejections=strict",
     "test-scripts": "ts-node scripts/testServer.ts --unhandled-rejections=strict",
-    "generate": "truffle compile && typechain --target truffle './build/**/*.json'",
-    "prepare": "yarn generate",
+    "compile": "truffle compile && typechain --target truffle './build/**/*.json'",
     "test": "truffle test && yarn tsc",
     "tsc": "tsc --noEmit"
   }
