@@ -10,12 +10,12 @@ export const TestNet: NetConnection = {
         address: "0x276e4B2EdE2a6d6A30A9E4453f9Ef6d69FFf3CD8"
     }
 }
-// https://bscscan.com/address/0xe9e7cea3dedca5984780bafc599bd69add087d56
+// https://bscscan.com/address/0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d
 export const MainNet: NetConnection = {
     TransferToUSDC: "0x674fbDD397bC632E51CEE410A30597Df32A53261",
     RPC_URL: "https://bsc-dataseed.binance.org/",
     socket: 'wss://dex.binance.org/api/ws',
-    stableCoinAddress: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
+    stableCoinAddress: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
     walletConfig: {
         address: "0x276e4B2EdE2a6d6A30A9E4453f9Ef6d69FFf3CD8"
     }
