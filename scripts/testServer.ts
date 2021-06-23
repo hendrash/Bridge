@@ -1,10 +1,10 @@
-import BridgeEvent from "../build/abi/TransferToUSDC.json";
+import BridgeEvent from "../build/abi/ContractAddress.json";
 import { web3Provider, webSocketProvider } from "./config";
 import { networkConfig } from "./globals";
 
 async function server() {
-    const bridgeEvent = new web3Provider.eth.Contract((BridgeEvent as any), networkConfig().TransferToUSDC)
-    const bridgeSocket = new webSocketProvider.eth.Contract((BridgeEvent as any), networkConfig().TransferToUSDC)
+    const bridgeEvent = new web3Provider.eth.Contract((BridgeEvent as any), networkConfig().ContractAddress)
+    const bridgeSocket = new webSocketProvider.eth.Contract((BridgeEvent as any), networkConfig().ContractAddress)
     try {
 
         console.log((await bridgeEvent.methods.getVarLog('1000', networkConfig().stableCoinAddress).send({

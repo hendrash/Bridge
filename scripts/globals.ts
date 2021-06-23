@@ -1,18 +1,18 @@
 import { config } from "dotenv"
 
 export const TestNet: NetConnection = {
-    TransferToUSDC: "0x5Cc70b806167669a6C5261f05509f025b0409ec0",
+    ContractAddress: "0xB4E3409e0B78021238C96670C5E93f58B03AECd3",
     RPC_URL: "https://data-seed-prebsc-1-s1.binance.org:8545/",
     socket: 'wss://testnet-dex.binance.org/api/ws',
-    stableCoinAddress: '0xd37eAa8738F8AC6B48217b46a918Cf39929cEAB5',
-    // https://testnet.bscscan.com/address/0xd37eaa8738f8ac6b48217b46a918cf39929ceab5
+    stableCoinAddress: '0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7',
+    // https://testnet.bscscan.com/address/0x78867bbeef44f2326bf8ddd1941a4439382ef2a7
     walletConfig: {
         address: "0x276e4B2EdE2a6d6A30A9E4453f9Ef6d69FFf3CD8"
     }
 }
 // https://bscscan.com/address/0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d
 export const MainNet: NetConnection = {
-    TransferToUSDC: "0x674fbDD397bC632E51CEE410A30597Df32A53261",
+    ContractAddress: "0x674fbDD397bC632E51CEE410A30597Df32A53261",
     RPC_URL: "https://bsc-dataseed.binance.org/",
     socket: 'wss://dex.binance.org/api/ws',
     stableCoinAddress: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
@@ -22,7 +22,7 @@ export const MainNet: NetConnection = {
     // socket: 'wss://stream.binance.com:9443/ws',
 }
 export const LocalNet: NetConnection = {
-    TransferToUSDC: "0x043774C7dcE1D5151d44a8FbcEA6CDAfe578938b",
+    ContractAddress: "0x043774C7dcE1D5151d44a8FbcEA6CDAfe578938b",
     RPC_URL: "http://127.0.0.1:8545",
     socket: `ws://127.0.0.1:8545`,
     stableCoinAddress: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
@@ -31,7 +31,7 @@ export const LocalNet: NetConnection = {
     }
 }
 export type NetConnection = {
-    TransferToUSDC: string,
+    ContractAddress: string,
     RPC_URL: string
     socket: string
     stableCoinAddress: string

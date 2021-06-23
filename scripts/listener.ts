@@ -3,7 +3,7 @@ import { bridgeSocket  } from "./config";
 async function client() {
 	try {
 		console.log(
-			await bridgeSocket().events.bridge((err: any, res: any) => {
+			await bridgeSocket().events.NewBridge((err: any, res: any) => {
 				if (err) {
 					console.log("Error within client contract",err)
 				}
