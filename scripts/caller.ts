@@ -1,10 +1,12 @@
-import { config } from "dotenv"
-import { bridgeEvent, web3Provider } from "./config"
+import { bridgeEvent } from "./config"
+import { MainTokenBookMark } from "./contractLibrary"
 import { networkConfig } from "./globals"
 let server = async ()=>{
+
+let network =networkConfig(MainTokenBookMark.usdc);
 	console.log(
-	bridgeEvent().methods.buyUSDC(10,networkConfig().stableCoinAddress).send({
-		from: networkConfig().walletConfig.address
+	bridgeEvent(network).methods.buyUSDC(10,network.tokenAddress).send({
+		from: network.walletConfig.address
 	},function(err:any, res: any){
 		if(err){
 			console.log("Error within the contract:\n",err)

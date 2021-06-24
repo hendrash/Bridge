@@ -15,6 +15,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^4.1.0",
     "@truffle/hdwallet-provider": "^1.4.0",
+    "axios": "^0.21.1",
     "current-git-branch": "^1.1.0",
     "dotenv": "^10.0.0",
     "truffle": "^5.3.11",
@@ -26,6 +27,7 @@
     "caller": "ts-node scripts/caller.ts --unhandled-rejections=strict",
     "test-scripts": "ts-node scripts/testServer.ts --unhandled-rejections=strict",
     "compile": "truffle compile && typechain --target truffle './build/**/*.json'",
+    "build": "ts-node test/generateExternalAPI.ts",
     "test": "truffle test && yarn tsc",
     "tsc": "tsc --noEmit"
   }
