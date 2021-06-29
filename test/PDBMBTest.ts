@@ -10,10 +10,8 @@ it("Confirm buying USDC",async function(){
 	console.log(await web3Provider(network,usdc).methods.approve(accounts[1],1000).send({
 		from: network.walletConfig.address
 	},function(err:any, res:any){
-		console.log(err)
-		// assert.notExists(err, err)
-		// assert.exists(res,"Failed to approve trasaction");
-		console.log(res);
+		assert.notExists(err, err)
+		assert.exists(res,res+"\nFailed to approve trasaction");
 	}))
 });
 })
