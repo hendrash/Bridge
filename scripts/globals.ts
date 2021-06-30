@@ -1,5 +1,6 @@
 import { config } from "dotenv"
 import { MainTokenBook, MainTokenBookMark, TestTokenBook, TestTokenBookMark } from "./contractLibrary";
+let fs = require("fs");
 
 export abstract class NetConnection {
 
@@ -58,7 +59,7 @@ constructor(contractBookMark: MainTokenBookMark) {
     public RPC_URL= "http://127.0.0.1:8545"
     public socket= `ws://127.0.0.1:8545`
     public walletConfig= {
-        address: "0xa84019C3A670826555D3442EfB68ED49fd1660F4"
+        address: start()
     }
 }
 
@@ -66,7 +67,7 @@ export type WalletConnection = {
     address: string
 }
 
-
+const start =()=> fs.readFileSync("../.logs").toString().trim().split("\n")[4].split(" ")[1];
 
 export const networkConfig = (contractBookMark: MainTokenBookMark | TestTokenBookMark) => {
     config();
