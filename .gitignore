@@ -3,3 +3,5 @@ node_modules
 types/truffle-contracts
 scripts/configuration.json
 .secret
+.logs
+.env

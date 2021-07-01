@@ -1,0 +1,13 @@
+{
+	"configurations": [
+	  {
+		"type": "pwa-node",
+		"name": "truffle debugger",
+		"request": "launch",
+		"runtimeExecutable": "truffle",
+		"runtimeArgs": ["test","--network","testnet"],
+		"envFile": "${workspaceFolder}/.env"
+		
+	    }
+	]
+    }

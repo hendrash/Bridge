@@ -1,11 +1,11 @@
-// import BridgeEvent from "../build/abi/ContractAddress.json";
+// import BridgeEvent from "../build/abi/contractAddress.json";
 // import { web3Provider, webSocketProvider } from "./config";
 import { networkConfig } from "./globals";
 
 async function server() {
   /*
-    const bridgeEvent = new web3Provider.eth.Contract((BridgeEvent as any), networkConfig().ContractAddress)
-    const bridgeSocket = new webSocketProvider.eth.Contract((BridgeEvent as any), networkConfig().ContractAddress)
+    const bridgeEvent = new web3Provider.eth.Contract((BridgeEvent as any), networkConfig().contractAddress)
+    const bridgeSocket = new webSocketProvider.eth.Contract((BridgeEvent as any), networkConfig().contractAddress)
     try {
 
         console.log((await bridgeEvent.methods.getVarLog('1000', networkConfig().tokenAddress).send({

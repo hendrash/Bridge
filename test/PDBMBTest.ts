@@ -1,17 +1,51 @@
 import { web3Provider } from "../scripts/config";
-import { MainTokenBookMark } from "../scripts/contractLibrary";
-import { networkConfig } from "../scripts/globals";
-import usdc from "../test/abi/usdc.json";
-const PolyDragonBinanceMaticBridge = artifacts.require("PolyDragonBinanceMaticBridge")
-contract('USDC-Contract',function (accounts){
-	
-it("Confirm buying USDC approvel",async function(){
-	let network =networkConfig(MainTokenBookMark.usdc);
-	console.log(await web3Provider(network,usdc).methods.approve(accounts[1],1000).send({
-		from: network.walletConfig.address
-	},function(err:any, res:any){
-		assert.notExists(err, err)
-		assert.exists(res,res+"\nFailed to approve trasaction");
-	}))
-});
+import { ContractDto, MainTokenBookMark, TestTokenBookMark } from "../scripts/contractLibrary";
+import { NetConnection, networkConfig } from "../scripts/globals";
+
+contract('USDC-Contract', function (accounts) {
+	let LOG = true;
+	let network: NetConnection;
+	let contract: any;
+	let token: ContractDto;
+	let user: string;
+	before("initalize provider", async function () {
+		network = networkConfig(accounts[0])
+		token = network.getContract(MainTokenBookMark.usdc, TestTokenBookMark.busd)
+		contract = web3Provider(token!.address, network.RPC_URL, token!.abi)
+		user = network.walletConfig.address;
+	})
+
+	it("Confirming approvel", async function () {
+		let log = await contract.methods.approve(user, 100000).send({
+			from: user
+		})
+		if (LOG) console.log(log)
+	});
+
+	it("Confirm approvel", async function () {
+		let log = await contract.methods.allowance(user, token.address).call({
+			from: user
+		})
+		if (LOG) console.log(log)
+	})
+
+	it("Transfer to USDC", async function () {
+		let log = await contract.methods.transferFrom(user, token.address, 100000).send({
+			from: user
+		});
+		if (LOG) console.log(log)
+	});
+
+	it("Check USDC balance", async function () {
+		let log = await contract.methods.balanceOf(user).call({
+			from: network.walletConfig.address
+		})
+		if (LOG) console.log(log)
+	})
+
+	after(function (done) {
+		done();
+
+	});
 })
+

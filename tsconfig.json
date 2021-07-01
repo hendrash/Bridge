@@ -27,7 +27,7 @@
   },
   "include": [
     "**/*.ts"
-  ],
+, "test/PDBMBTest.ts"  ],
   "exclude": [
     "node_modules",
     "example",
