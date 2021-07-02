@@ -1,23 +1,28 @@
 require("ts-node/register");
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 let fs = require("fs");
-
-const provider =()=> fs
+let localMnemonicVar;
+const localMnemonic =()=>{ 
+  if(!providerVar){
+ providerVar=fs
   .readFileSync(".logs")
   .toString()
   .trim().split("\n")[30].split("      ")[1];
-
-
-const mnemonic =()=> fs
-  .readFileSync(".secret")
-  .toString()
-  .trim();
+  }
+  return providerVar
+}
+let mnemonicVar;
+const mnemonic =()=> {
+  if(!mnemonicVar)
+  mnemonicVar=fs.readFileSync(".secret").toString().trim();
+  return mnemonicVar
+}
 
 
 module.exports = {
   networks: {
     development: {
-      // provider: ()=> new HDWalletProvider(provider(), `https://bsc-dataseed.binance.org/`),
+      provider: ()=> new HDWalletProvider(localMnemonic(), `https://bsc-dataseed.binance.org/`),
       host: "localhost",
       port: 8545,
       network_id: "*", // Match any network id

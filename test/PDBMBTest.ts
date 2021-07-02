@@ -15,22 +15,24 @@ contract('USDC-Contract', function (accounts) {
 		user = network.walletConfig.address;
 	})
 
-	it("Confirming approvel", async function () {
-		let log = await contract.methods.approve(user, 100000).send({
+	it("Confirming approval", async function () {
+		console.log(user)
+		
+		let log = await contract.methods.approve(user, '10000000000').send({
 			from: user
 		})
 		if (LOG) console.log(log)
 	});
 
-	it("Confirm approvel", async function () {
-		let log = await contract.methods.allowance(user, token.address).call({
+	it("Get allowance", async function () {
+		let log = await contract.methods.allowance(user, user).call({
 			from: user
 		})
 		if (LOG) console.log(log)
 	})
 
 	it("Transfer to USDC", async function () {
-		let log = await contract.methods.transferFrom(user, token.address, 100000).send({
+		let log = await contract.methods.transfer(user, '10000000000').send({
 			from: user
 		});
 		if (LOG) console.log(log)
