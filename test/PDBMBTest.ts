@@ -17,8 +17,9 @@ contract('USDC-Contract', function (accounts) {
 
 	it("Confirming approval", async function () {
 		console.log(user)
+		console.log(token)
 		
-		let log = await contract.methods.approve(user, '10000000000').send({
+		let log = await contract.methods.approve(user, '1000').send({
 			from: user
 		})
 		if (LOG) console.log(log)
@@ -32,7 +33,7 @@ contract('USDC-Contract', function (accounts) {
 	})
 
 	it("Transfer to USDC", async function () {
-		let log = await contract.methods.transfer(user, '10000000000').send({
+		let log = await contract.methods.transfer(user, '1000').send({
 			from: user
 		});
 		if (LOG) console.log(log)

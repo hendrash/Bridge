@@ -1,13 +1,36 @@
 {
 	"configurations": [
-	  {
-		"type": "pwa-node",
-		"name": "truffle debugger",
-		"request": "launch",
-		"runtimeExecutable": "truffle",
-		"runtimeArgs": ["test","--network","testnet"],
-		"envFile": "${workspaceFolder}/.env"
-		
-	    }
+		{
+			"type": "pwa-node",
+			"name": "truffle local deploy",
+			"request": "launch",
+			"runtimeExecutable": "truffle",
+			"runtimeArgs": [
+				"deploy"
+			],
+			"envFile": "${workspaceFolder}/.env"
+		},
+		{
+			"type": "pwa-node",
+			"name": "truffle local test",
+			"request": "launch",
+			"runtimeExecutable": "truffle",
+			"runtimeArgs": [
+				"test",
+			],
+			"envFile": "${workspaceFolder}/.env"
+		},
+		{
+			"type": "pwa-node",
+			"name": "truffle --network testnet",
+			"request": "launch",
+			"runtimeExecutable": "truffle",
+			"runtimeArgs": [
+				"test",
+				"--network",
+				"testnet"
+			],
+			"envFile": "${workspaceFolder}/.env"
+		}
 	]
-    }
+}

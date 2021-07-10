@@ -3,13 +3,13 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 let fs = require("fs");
 let localMnemonicVar;
 const localMnemonic =()=>{ 
-  if(!providerVar){
- providerVar=fs
+  if(!localMnemonicVar){
+ localMnemonicVar=fs
   .readFileSync(".logs")
   .toString()
   .trim().split("\n")[30].split("      ")[1];
   }
-  return providerVar
+  return localMnemonicVar
 }
 let mnemonicVar;
 const mnemonic =()=> {
@@ -27,7 +27,6 @@ module.exports = {
       port: 8545,
       network_id: "*", // Match any network id
       gas: 5000000,
-      branch_name: "local_net",
     },
     testnet: {
       provider: () =>
