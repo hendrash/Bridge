@@ -1,6 +1,6 @@
 build/contracts
 node_modules
-types/truffle-contracts
+# types/truffle-contracts
 scripts/configuration.json
 .secret
 .logs
