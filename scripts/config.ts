@@ -7,10 +7,13 @@ export const web3SocketProvider = (address: string, rpc_socket_url:string, abi:a
 	return new webSocketProvider.eth.Contract(abi,address)
 }
 
-export const web3Provider = (address: string,rpc_url:string, abi:any) => {
-	const httpProvider = new Web3.providers.HttpProvider(rpc_url, { timeout: 10000 } as HttpProviderOptions)
-	const _web3Provider = new Web3(httpProvider);
-	return new _web3Provider.eth.Contract(abi,address)
+export const web3Provider = (address: string, abi:any) => {
+	// const httpProvider = new Web3.providers.HttpProvider(rpc_url, { timeout: 10000 } as HttpProviderOptions)
+
+	return new web3.eth.Contract(abi,address)
+	
+	// const _web3Provider = new Web3(httpProvider);
+	// return new _web3Provider.eth.Contract(abi,address)
 }
 
 

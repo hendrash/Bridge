@@ -17,16 +17,16 @@ export abstract class NetConnection {
     public abstract RPC_URL: string
     public abstract socket: string
     public abstract walletConfig: WalletConnection
-    public _getContract: (key:  MainTokenBookMark | TestTokenBookMark)=>ContractDto| undefined;
-    public getContract(main: MainTokenBookMark, test: TestTokenBookMark){
+    public _getContract: (key: MainTokenBookMark | TestTokenBookMark) => ContractDto | undefined;
+    public getContract(main: MainTokenBookMark, test: TestTokenBookMark) {
         let token: ContractDto;
-        if(process.env.NETWORK===State.MAIN){
-            return token=this._getContract.bind(NetConnection)(main)!
+        if (process.env.NETWORK === State.MAIN) {
+            return token = this._getContract.bind(NetConnection)(main)!
         }
-        else if(process.env.NETWORK===State.TEST){
-            return token=this._getContract.bind(NetConnection)(test)!
+        else if (process.env.NETWORK === State.TEST) {
+            return token = this._getContract.bind(NetConnection)(test)!
         }
-        else{
+        else {
             return token = this._getContract.bind(NetConnection)(main)!
         }
     }
@@ -44,7 +44,6 @@ export class TestNet extends NetConnection {
     }
 }
 
-
 // https://bscscan.com/address/0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d
 export class MainNet extends NetConnection {
     constructor() {
@@ -57,12 +56,12 @@ export class MainNet extends NetConnection {
     }
 }
 export class LocalNet extends NetConnection {
-    constructor(accounts:string) {
+    constructor(accounts: string) {
         super();
-        this.contractAddress=accounts
+        this.contractAddress = accounts
 
     }
-    public contractAddress:string;
+    public contractAddress: string;
     public RPC_URL = "http://127.0.0.1:8545"
     public socket = `ws://127.0.0.1:8545`
     public walletConfig = {
@@ -74,7 +73,7 @@ export class LocalNet extends NetConnection {
 
 const start = () => fs.readFileSync(".logs").toString().trim().split("\n")[4].split(" ")[1];
 
-export const networkConfig = (accounts?:string ) => {
+export const networkConfig = (accounts?: string) => {
     config();
     if (process.env.NETWORK + "" === State.MAIN) {
         return new MainNet();

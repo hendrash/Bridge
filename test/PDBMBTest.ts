@@ -10,22 +10,24 @@ contract('USDC-Contract', function (accounts) {
 	let user: string;
 	before("initalize provider", async function () {
 		network = networkConfig(accounts[0])
+		//Initalize token 
 		token = network.getContract(MainTokenBookMark.usdc, TestTokenBookMark.busd)
-		contract = web3Provider(token!.address, network.RPC_URL, token!.abi)
+		contract = web3Provider(token!.address,  token!.abi)
 		user = network.walletConfig.address;
 	})
 
+
 	it("Confirming approval", async function () {
 		console.log(user)
-		console.log(token)
+		console.log(token.address)
 		
-		let log = await contract.methods.approve(user, '1000').send({
+		let log = await contract.methods.approve(user, '100').send({
 			from: user
-		})
+		}).once('transactionHash',(hash:any)=>{console.log(hash)})
 		if (LOG) console.log(log)
 	});
 
-	it("Get allowance", async function () {
+	it("Get check", async function () {
 		let log = await contract.methods.allowance(user, user).call({
 			from: user
 		})
@@ -33,9 +35,9 @@ contract('USDC-Contract', function (accounts) {
 	})
 
 	it("Transfer to USDC", async function () {
-		let log = await contract.methods.transfer(user, '1000').send({
+		let log = await contract.methods.transfer(user, '100').send({
 			from: user
-		});
+		}).once('transactionHash',(hash:any)=>{console.log(hash)});
 		if (LOG) console.log(log)
 	});
 
