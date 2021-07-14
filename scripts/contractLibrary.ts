@@ -1,8 +1,10 @@
 import usdc from "../build/abi/main/usdc.json"
 import busdc from "../build/abi/test/busdc.json"
+import polydragonbinancematicbridge from "../build/abi/test/polydragonbinancematicbridge.json"
 //one to one
 export const enum MainTokenBookMark {
 	usdc = "Binance-Peg USD Coin (USDC)"
+
 }
 export const MainTokenBook = new Map([
 	// https://bscscan.com/address/0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d
@@ -12,13 +14,18 @@ export const MainTokenBook = new Map([
 	}]
 ]);
 export enum TestTokenBookMark {
-	busd="BUSD Token (BUSD)"
+	busd="BUSD Token (BUSD)",
+	bnbpolybridge="polyDragonBinanceMaticBridge"
  }
 export const TestTokenBook = new Map([
     // https://testnet.bscscan.com/address/0x78867bbeef44f2326bf8ddd1941a4439382ef2a7
 	['BUSD Token (BUSD)', {
 		address:'0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7',
 		abi: busdc
+	}],
+	['polyDragonBinanceMaticBridge',{
+		address:'0xE5d60Be9Df0C85CAD8880d1F454d52fE921acd0B',
+		abi:polydragonbinancematicbridge
 	}]
 ])
 export type ContractDto= {

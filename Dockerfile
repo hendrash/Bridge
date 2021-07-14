@@ -14,5 +14,5 @@ RUN npm i -g truffle  \
 	&& npm i -g typescript \
 	&& npm i -g ts-node \ 
 	&& npm i -g npm@latest \
-	&& npm i -g npm i -g ganache-cli
+	&& npm i -g npm i -g ganache-cli \
 	&& npm i 

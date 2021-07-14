@@ -27,7 +27,7 @@
   },
   "include": [
     "**/*.ts"
-, "test/PDBMBTest.ts"  ],
+, "test/1-USDCTest.ts"  ],
   "exclude": [
     "node_modules",
     "example",

@@ -18,16 +18,16 @@ export abstract class NetConnection {
     public abstract socket: string
     public abstract walletConfig: WalletConnection
     public _getContract: (key: MainTokenBookMark | TestTokenBookMark) => ContractDto | undefined;
-    public getContract(main: MainTokenBookMark, test: TestTokenBookMark) {
+    public getContract(main?: MainTokenBookMark, test?: TestTokenBookMark) {
         let token: ContractDto;
         if (process.env.NETWORK === State.MAIN) {
-            return token = this._getContract.bind(NetConnection)(main)!
+            return token = this._getContract.bind(NetConnection)(main!)!
         }
         else if (process.env.NETWORK === State.TEST) {
-            return token = this._getContract.bind(NetConnection)(test)!
+            return token = this._getContract.bind(NetConnection)(test!)!
         }
         else {
-            return token = this._getContract.bind(NetConnection)(main)!
+            return token = this._getContract.bind(NetConnection)(main!)!
         }
     }
 

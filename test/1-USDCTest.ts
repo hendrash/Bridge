@@ -2,8 +2,8 @@ import { web3Provider } from "../scripts/config";
 import { ContractDto, MainTokenBookMark, TestTokenBookMark } from "../scripts/contractLibrary";
 import { NetConnection, networkConfig } from "../scripts/globals";
 
-contract('USDC-Contract', function (accounts) {
-	let LOG = true;
+contract('1) USDC Contract test set up', function (accounts) {
+	let LOG = false;
 	let network: NetConnection;
 	let contract: any;
 	let token: ContractDto;
@@ -21,7 +21,7 @@ contract('USDC-Contract', function (accounts) {
 		console.log(user)
 		console.log(token.address)
 		
-		let log = await contract.methods.approve(user, '100').send({
+		let log = await contract.methods.approve(user, '1000000').send({
 			from: user
 		}).once('transactionHash',(hash:any)=>{console.log(hash)})
 		if (LOG) console.log(log)
@@ -35,7 +35,7 @@ contract('USDC-Contract', function (accounts) {
 	})
 
 	it("Transfer to USDC", async function () {
-		let log = await contract.methods.transfer(user, '100').send({
+		let log = await contract.methods.transfer(user, '1000000').send({
 			from: user
 		}).once('transactionHash',(hash:any)=>{console.log(hash)});
 		if (LOG) console.log(log)
