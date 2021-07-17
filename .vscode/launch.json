@@ -31,6 +31,16 @@
 				"testnet",
 			],
 			"envFile": "${workspaceFolder}/.env"
+		},
+		{
+			"type": "pwa-node",
+			"name": "ts-node mockServer/mockServer",
+			"request": "launch",
+			"runtimeExecutable": "ts-node",
+			"runtimeArgs": [
+				"mockServer/mockServer.ts",
+			],
+			"envFile": "${workspaceFolder}/.env"
 		}
 	]
 }
