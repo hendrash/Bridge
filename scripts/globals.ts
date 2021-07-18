@@ -9,7 +9,7 @@ export abstract class NetConnection {
             this._getContract = TestTokenBook.get.bind(TestTokenBook)
         }
         else {
-            this._getContract = MainTokenBook.get.bind(TestTokenBook)
+            this._getContract = MainTokenBook.get.bind(MainTokenBook)
         }
 
     }

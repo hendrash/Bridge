@@ -3,7 +3,8 @@ import busdc from "../build/abi/test/busdc.json"
 import polydragonbinancematicbridge from "../build/abi/test/polydragonbinancematicbridge.json"
 //one to one
 export const enum MainTokenBookMark {
-	usdc = "Binance-Peg USD Coin (USDC)"
+	usdc = "Binance-Peg USD Coin (USDC)",
+	bnbpolybridge="0xE80F6a8221B94D42D2A373CD3A054ae7d189C6F9"
 
 }
 export const MainTokenBook = new Map([

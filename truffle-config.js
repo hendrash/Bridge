@@ -22,7 +22,7 @@ const mnemonic =()=> {
 module.exports = {
   networks: {
     development: {
-      provider: ()=> new HDWalletProvider(localMnemonic(), `https://bsc-dataseed.binance.org/`),
+      // provider: ()=> new HDWalletProvider(localMnemonic(), `https://bsc-dataseed.binance.org/`),
       host: "localhost",
       port: 8545,
       network_id: "*", // Match any network id
