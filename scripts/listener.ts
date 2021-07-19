@@ -1,33 +1,20 @@
-import {  web3SocketProvider  } from "./config";
-import { ContractDto, MainTokenBookMark } from "./contractLibrary";
-import { networkConfig } from "./globals";
-
-async function client() {
-
-let network =networkConfig();
-	try {
-		let token: ContractDto;
-		if(process.env.NETWORK==="TEST"){
-			token=network._getContract(MainTokenBookMark.usdc)!;
-
-		}else{
-			token=network._getContract(MainTokenBookMark.usdc)!
+import { web3SocketProvider } from "../scripts/config";
+import { MainTokenBookMark, TestTokenBookMark } from "../scripts/contractLibrary";
+import { networkConfig } from "../scripts/globals";
+import { config } from "dotenv";
+let mockServer=async ()=>{
+	let LOG=true;
+	config();
+	let nc =networkConfig()	
+	let bridgeSocket=await web3SocketProvider(nc.walletConfig.address, nc.socket, nc.getContract(undefined,TestTokenBookMark.bnbpolybridge).abi);
+	let log=bridgeSocket.events.receipt((err:any, res:any)=>{
+		if(err){
+			console.log("Error within client contract",err)
 		}
-
-		console.log(
-			await web3SocketProvider(token!.address, network.RPC_URL,token!.abi).events.NewBridge((err: any, res: any) => {
-				if (err) {
-					console.log("Error within client contract",err)
-				}
-				else {
-					console.log(res)
-				}
-
-			})
-		)
-
-	} catch (error) {
-		console.log(error)
-	}
+		else {
+			console.log(res)
+		}
+	})
+	if(LOG)console.log(log)
 }
-client();
+mockServer();

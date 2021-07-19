@@ -16,6 +16,7 @@ export abstract class NetConnection {
 
     public abstract RPC_URL: string
     public abstract socket: string
+    public abstract testAmt: string
     public abstract walletConfig: WalletConnection
     public _getContract: (key: MainTokenBookMark | TestTokenBookMark) => ContractDto | undefined;
     public getContract(main?: MainTokenBookMark, test?: TestTokenBookMark) {
@@ -39,6 +40,7 @@ export class TestNet extends NetConnection {
     }
     public RPC_URL = "https://data-seed-prebsc-1-s1.binance.org:8545/"
     public socket = 'wss://testnet-dex.binance.org/api/ws'
+    public testAmt='10000000'
     public walletConfig = {
         address: "0x276e4B2EdE2a6d6A30A9E4453f9Ef6d69FFf3CD8"
     }
@@ -51,6 +53,7 @@ export class MainNet extends NetConnection {
     }
     public RPC_URL = "https://bsc-dataseed.binance.org/"
     public socket = 'wss://dex.binance.org/api/ws'
+    public testAmt='10000000'
     public walletConfig = {
         address: "0x276e4B2EdE2a6d6A30A9E4453f9Ef6d69FFf3CD8"
     }
@@ -64,6 +67,7 @@ export class LocalNet extends NetConnection {
     public contractAddress: string;
     public RPC_URL = "http://127.0.0.1:8545"
     public socket = `ws://127.0.0.1:8545`
+    public testAmt="1000000000000000000"
     public walletConfig = {
         address: start()
     }

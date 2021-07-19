@@ -21,7 +21,7 @@ contract('1) USDC Contract test set up', function (accounts) {
 		console.log(user)
 		console.log(token.address)
 		
-		let log = await contract.methods.approve(user, '1000000').send({
+		let log = await contract.methods.approve(user, network.testAmt).send({
 			from: user
 		}).once('transactionHash',(hash:any)=>{console.log(hash)})
 		if (LOG) console.log(log)
@@ -35,7 +35,7 @@ contract('1) USDC Contract test set up', function (accounts) {
 	})
 
 	it("Transfer to USDC", async function () {
-		let log = await contract.methods.transfer(user, '1000000').send({
+		let log = await contract.methods.transfer(user, network.testAmt).send({
 			from: user
 		}).once('transactionHash',(hash:any)=>{console.log(hash)});
 		if (LOG) console.log(log)

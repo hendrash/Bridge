@@ -7,7 +7,7 @@ let network =networkConfig();
 	network._getContract(MainTokenBookMark.usdc);
 	let token=network.getContract(MainTokenBookMark.usdc, TestTokenBookMark.busd)!;
 	console.log(
-	web3Provider(token.address, network.RPC_URL, token.abi).methods.buyUSDC(10,token.address).send({
+	web3Provider(token.address, token.abi).methods.buyUSDC(10,token.address).send({
 		from: network.walletConfig.address
 	},function(err:any, res: any){
 		if(err){

@@ -4,7 +4,7 @@ import polydragonbinancematicbridge from "../build/abi/test/polydragonbinancemat
 //one to one
 export const enum MainTokenBookMark {
 	usdc = "Binance-Peg USD Coin (USDC)",
-	bnbpolybridge="0xE80F6a8221B94D42D2A373CD3A054ae7d189C6F9"
+	bnbpolybridge="polydragon binance matic bridge mainnet"
 
 }
 export const MainTokenBook = new Map([
@@ -12,6 +12,9 @@ export const MainTokenBook = new Map([
 	['Binance-Peg USD Coin (USDC)', {
 		address:'0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
 		abi:usdc
+	}],['polydragon binance matic bridge mainnet',{
+		address:'0xE80F6a8221B94D42D2A373CD3A054ae7d189C6F9',
+		abi:polydragonbinancematicbridge
 	}]
 ]);
 export enum TestTokenBookMark {
@@ -25,6 +28,7 @@ export const TestTokenBook = new Map([
 		abi: busdc
 	}],
 	['polyDragonBinanceMaticBridge',{
+		// 0xA9a2498B3Bded57C8d796e18Deddc5c0fc5fC76f
 		address:'0xE5d60Be9Df0C85CAD8880d1F454d52fE921acd0B',
 		abi:polydragonbinancematicbridge
 	}]
