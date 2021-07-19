@@ -6,7 +6,7 @@ let mockServer=async ()=>{
 	let LOG=true;
 	config();
 	let nc =networkConfig()	
-	let bridgeSocket=await web3SocketProvider(nc.walletConfig.address, nc.socket, nc.getContract(undefined,TestTokenBookMark.bnbpolybridge).abi);
+	let bridgeSocket=await web3SocketProvider(nc.walletConfig.address, nc.socket, nc.getContract(MainTokenBookMark.bnbpolybridge,TestTokenBookMark.bnbpolybridge).abi);
 	let log=bridgeSocket.events.receipt((err:any, res:any)=>{
 		if(err){
 			console.log("Error within client contract",err)
