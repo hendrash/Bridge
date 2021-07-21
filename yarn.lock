@@ -11726,7 +11726,7 @@
     "underscore" "1.12.1"
     "utf8" "3.0.0"
 
-"web3@^1.3.6", "web3@1.4.0":
+"web3@^1.4.0", "web3@1.4.0":
   "integrity" "sha512-faT3pIX+1tuo+wqmUFQPe10MUGaB1UvRYxw9dmVJFLxaRAIfXErSilOf3jFhSwKbbPNkwG0bTiudCLN9JgeS7A=="
   "resolved" "https://registry.npmjs.org/web3/-/web3-1.4.0.tgz"
   "version" "1.4.0"

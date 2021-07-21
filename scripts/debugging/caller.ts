@@ -1,6 +1,6 @@
-import { web3Provider } from "./config";
-import { MainTokenBookMark, TestTokenBookMark } from "./contractLibrary"
-import { networkConfig } from "./globals"
+import { web3Provider } from "../config";
+import { MainTokenBookMark, TestTokenBookMark } from "../contractLibrary"
+import { networkConfig } from "../globals"
 let server = async ()=>{
 
 let network =networkConfig();
