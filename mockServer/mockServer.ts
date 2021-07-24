@@ -8,9 +8,11 @@ let mockServer = async () => {
 	config();
 	let nc = networkConfig()
 	let token = nc.getContract(MainTokenBookMark.bnbpolybridge, TestTokenBookMark.bnbpolybridge)
-	let bridgeSocket = web3SocketProviderContext(token.address, nc.socket, token.abi);
-	
-	let log = bridgeSocket.events.receipt((err: any, res: any) => {
+	let bridgeSocket = web3SocketProviderContext(token.address,token.abi, nc.socket);
+	let log = await bridgeSocket.events.receipt(async (err: any, res: any) => {
+		console.log("======")
+		console.log(err,"err")
+		console.log(res,"res")
 		if (err) {
 			console.log("Error within client contract", err)
 		}
@@ -18,24 +20,37 @@ let mockServer = async () => {
 			console.log(res)
 		}
 	})
+	console.log( log.id=97)
 	
-	if (LOG) console.log(log)
+	console.log(await log,"\n\n")
+	// console.log(await log.options.subscription.subscriptionHandler)
+	// console.log("\n\n")
+	// console.log(await log.options.requestManager)
+	// console.log(log)
+	// if (LOG) console.log(log)
 }
-let mockServer2=()=>{
+let mockServer2=async ()=>{
 	let nc = networkConfig()
 	let network =nc.getContract(MainTokenBookMark.bnbpolybridge, TestTokenBookMark.bnbpolybridge)
 
 	const web3=new Web3(nc.socket);
-	let hello =web3.eth.subscribe('logs',{
+	
+	
+	console.log(await web3.eth.subscribe('logs',{
 		address:network.address,
-		topics:["receipt"]
+		topics:["0xd555d473"]
 	},(err, res)=>{
+		console.log(res,"logs res")
 		if(err){
 			console.error(err)
 		}
 	}).on("connected", function(subscription){
-		console.log("1",subscription)
-	}).on("data", function(log){console.log("2",log)})
-console.log(hello)
+		console.log("connected",subscription)
+	}).on("data", function(log){console.log("data",log)}).subscribe((err,res)=>{
+		console.log(err,"error data")
+		console.log(res,"res data")
+	}))
+
 }
-mockServer();
+
+mockServer2();
